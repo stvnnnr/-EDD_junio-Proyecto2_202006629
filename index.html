@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>catsbooks</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="src/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/2afef9cfdb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- loginnnnnnnnnnnnn -->
+    <div id="loginDiv" style="position: relative;">
+        <div id="centrar" style=" width: 350px;
+        height: 200px;
+        /* centrar vertical y horizontalmente */
+        position: absolute;
+        top: 200px;
+        left: 500px;">
+            <form>
+                <div class="form-outline mb-4">
+                    <input type="email" id="user" class="form-control" id="user" />
+                    <label class="form-label" for="form2Example1">Usuario</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="password" id="pass" class="form-control" id="pass" />
+                    <label class="form-label" for="form2Example2">Contraseña</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Administrador
+                    </label>
+                </div>
+                <hr>
+                <button type="button" id="log" class="btn btn-primary btn-block mb-4">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+    <!-- adminnnnnnnnnnnnnnnnnnnnn -->
+    <div id="adminDiv" style="display: none;">
+        <nav class="navbar navbar-light bg-light">
+            <div class="w-100 clearfix shadow-sm px-4">
+                <div class="p-2 float-end text-end right">
+                    <label class="text-muted"></label><br>
+                    <button class="btn btn-link p-0" id="logout" class="small">Cerrar Sesión</button>
+                </div>
+            </div>
+        </nav>
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Usuarios</button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                    type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Blockchain</button>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <!--Empieza seccion de usuarios-->
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="p-4">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#carga-peliculas">
+                        Carga masiva Peliculas
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#carga-clientes">
+                        Carga masiva Clientes
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#carga-actores">
+                        Carga masiva Actores
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#carga-categorias">
+                        Carga masiva Categorias
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="carga-peliculas" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" id="divCargaPelis">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Carga masiva Peliculas</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="files">Upload a Json formatted file:</label>
+                                    <input type="file" id="filePeli" class="form-control" accept=".Json" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" id="enviarPeli">Enviar
+                                        archivo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="carga-clientes" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" id="divCargaClientes">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Carga masiva Clientes</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="files">Upload a Json formatted file:</label>
+                                    <input type="file" id="fleClientes" class="form-control" accept=".Json" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" id="enviarCliente">Enviar
+                                        archivo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="carga-actores" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" id="divCargaActores">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Carga masiva Actores</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="files">Upload a Json formatted file:</label>
+                                    <input type="file" id="fileActores" class="form-control" accept=".Json" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" id="enviarUser">Enviar
+                                        archivo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="carga-categorias" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" id="divCargaCate">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Carga masiva Categorias</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="files">Upload a Json formatted file:</label>
+                                    <input type="file" id="fileCate" class="form-control" accept=".Json" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" id="enviarCate">Enviar
+                                        archivo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4" id="table-users" style="display: flex;">
+                        <div id="botonesDos">
+                            <div id="botoncines">
+                                <div class="btn-group-vertical" role="group"
+                                    aria-label="Button group with nested dropdown">
+                                    <button type="button" class="btn btn-primary">Grafo Peliculas</button>
+                                    <button type="button" class="btn btn-primary">Grafo Clientes</button>
+                                    <button type="button" class="btn btn-primary">Grafo Actores</button>
+                                    <button type="button" class="btn btn-primary">Grafo Categorias</button>
+
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Descargar Grafo
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            <li><button type="button" class="btn btn-success">Peliculas</button></li>
+                                            <li><button type="button" class="btn btn-success">Clientes</button></li>
+                                            <li><button type="button" class="btn btn-success">Actores</button></li>
+                                            <li><button type="button" class="btn btn-success">Categorias</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="graficaUno">
+                            <div class="container vertical-scrollable">
+                                <div class="row text-center" id="divScrolUno">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="graficaDos">
+                            <div class="container vertical-scrollable">
+                                <div class="row text-center" id="divScrolDos" style="display: none;">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="graficaTres">
+                            <div class="container vertical-scrollable">
+                                <div class="row text-center" id="divScrolTres" style="display: none;">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="graficaCuatro">
+                            <div class="container vertical-scrollable">
+                                <div class="row text-center" id="divScrolCuatro" style="display: none;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- dfghjklñdfghjklñfghjklbnm, -->
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="p-4">
+                    <form class="row g-3">
+                        <div class="col-auto">
+                            <label for="inputPassword2" class="visually-hidden">Segundos</label>
+                            <input type="password" class="form-control" id="segundera" placeholder="Segundos">
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary mb-3">Modificar Tiempo</button>
+                            <button type="button" class="btn btn-primary mb-3">Generar bloque</button>
+                        </div>
+                    </form>
+                    <div id="general">
+                        <div id="Uno" class="jeje">
+
+                        </div>
+                        <div id="Dos" class="jeje">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="//d3js.org/d3.v5.min.js"></script>
+<script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
+<script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
+<script src="src/js/bootstrap/bootstrap.min.js"></script>
+<script src="src/js/bootstrap/popper.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="src/js/bootstrap/papaparse.min.js"></script>
+<script type="module" src="src/js/login.js"></script>
+<script type="module" src="src/js/admin.js"></script>
+<!-- <script type="module" src="src/js/listasUsuarios/listaCUsuarios.js"></script>
+<script type="module" src="src/js/listaAdmins/listaAdmins.js"></script>
+<script type="module" src="src/js/listaLibrosComprados/listaLibCom.js"></script>
+<script type="module" src="src/js/arbolAutores/arbolAutores.js"></script>
+<script type="module" src="src/js/matrizOrtogonalLibros/matrizOrtogonal.js"></script>
+<script type="module" src="src/js/listaLibros/listaLibros.js"></script>
+<script type="module" src="src/js/matrizDisperza/matrizDisperza.js"></script> -->
+
+</html>
