@@ -1,10 +1,20 @@
-
+import { arbolPeli } from './arbolAVL/arbolAVL.js'
+import { pelicula } from './peliculas.js'
+import { listaCli } from './listaClientes/listaClientes.js'
+import { cliente } from './cliente.js'
+import { arbolActor } from './arbolBinario/arbolActores.js'
+import{autor} from './actor.js'
+import{hashCate} from './hashCategorias/hash.js'
+import{Categoria} from './Categoria.js'
 document.getElementById('enviarPeli').addEventListener("click", loadPeli, false);
 document.getElementById('enviarCliente').addEventListener("click", loadCliente, false);
 document.getElementById('enviarUser').addEventListener("click", loadActor, false);
 document.getElementById('enviarCate').addEventListener("click", loadCategoria, false);
 document.getElementById('logout').addEventListener("click", logout, false);
-
+document.getElementById('Uno').addEventListener("click", movUno, false);
+document.getElementById('Dos').addEventListener("click", movDos, false);
+document.getElementById('Tres').addEventListener("click", movTres, false);
+document.getElementById('Cuatro').addEventListener("click", movCuatro, false);
 
 
 
@@ -39,21 +49,12 @@ function receivedText(e) {
     alert("Documento Subido")
 }
 function crearPeli(archivo) {
-    console.log("XDDD")
-    // for (let x of archivo) {
-    //     var userNew = new usuario(x.dpi, x.nombre_completo, x.nombre_usuario, x.correo, x.rol, x.contrasenia, x.telefono)
-    //     var listComp = new listaCompras()
-    //     userNew.setLibros(listComp)
-    //     if (x.rol == "Administrador") {
-    //         listaAdmins.insertar(userNew)
-    //     } else {
-    //         listaUsuarios.insertar(userNew)
-    //     }
-    // }
-    // listaAdmins.recorrer()
-    // console.log("---------------------------------------------------")
-    // listaUsuarios.recorrer()
-    // listaUsuarios.graficarAdmin()
+    // console.log("XDDD")
+    for (let x of archivo) {
+        var peliNew = new pelicula(x.id_pelicula, x.nombre_pelicula, x.descripcion, x.puntuacion_star, x.precion_Q)
+        arbolPeli.insertar(peliNew)
+    }
+    arbolPeli.generarDot()
 }
 // Cliente------------------------------------------------------------------------------
 function loadCliente() {
@@ -83,17 +84,12 @@ function receivedTextDos(e) {
     alert("Documento Subido")
 }
 function crearCliente(archivo) {
-    console.log("XXXD")
-    // for (let x of archivo) {
-    //     var userNew = new usuario(x.dpi, x.nombre_completo, x.nombre_usuario, x.correo, x.rol, x.contrasenia, x.telefono)
-    //     var listComp = new listaCompras()
-    //     userNew.setLibros(listComp)
-    //     if (x.rol == "Administrador") {
-    //         listaAdmins.insertar(userNew)
-    //     } else {
-    //         listaUsuarios.insertar(userNew)
-    //     }
-    // }
+    // console.log("XXXD")
+    for (let x of archivo) {
+        var userNew = new cliente(x.dpi, x.nombre_completo, x.nombre_usuario, x.correo, x.contrasenia, x.telefono)
+        listaCli.insertar(userNew)
+    }
+    listaCli.graficar()
     // listaAdmins.recorrer()
     // console.log("---------------------------------------------------")
     // listaUsuarios.recorrer()
@@ -127,17 +123,12 @@ function receivedTextTres(e) {
     alert("Documento Subido")
 }
 function crearActor(archivo) {
-    console.log("XXDD")
-    // for (let x of archivo) {
-    //     var userNew = new usuario(x.dpi, x.nombre_completo, x.nombre_usuario, x.correo, x.rol, x.contrasenia, x.telefono)
-    //     var listComp = new listaCompras()
-    //     userNew.setLibros(listComp)
-    //     if (x.rol == "Administrador") {
-    //         listaAdmins.insertar(userNew)
-    //     } else {
-    //         listaUsuarios.insertar(userNew)
-    //     }
-    // }
+    // console.log("XXDD")
+    for (let x of archivo) {
+        var userNew = new autor(x.dni, x.nombre_actor, x.correo, x.descripcion)
+        arbolActor.insertar(userNew)
+    }
+    arbolActor.generarDot()
     // listaAdmins.recorrer()
     // console.log("---------------------------------------------------")
     // listaUsuarios.recorrer()
@@ -171,17 +162,15 @@ function receivedTextCua(e) {
     alert("Documento Subido")
 }
 function crearCate(archivo) {
-    console.log("XD")
-    // for (let x of archivo) {
-    //     var userNew = new usuario(x.dpi, x.nombre_completo, x.nombre_usuario, x.correo, x.rol, x.contrasenia, x.telefono)
-    //     var listComp = new listaCompras()
-    //     userNew.setLibros(listComp)
-    //     if (x.rol == "Administrador") {
-    //         listaAdmins.insertar(userNew)
-    //     } else {
-    //         listaUsuarios.insertar(userNew)
-    //     }
-    // }
+    // console.log("XD")
+    for (let x of archivo) {
+        var userNew = new Categoria(x.id_categoria,x.company)
+        var modulex = (x.id_categoria%20)
+        var listaUno = hashCate.buscador(modulex)
+        listaUno.insertar(userNew)
+    }
+    hashCate.graficarAdmin()
+    // 
     // listaAdmins.recorrer()
     // console.log("---------------------------------------------------")
     // listaUsuarios.recorrer()
@@ -192,4 +181,29 @@ function crearCate(archivo) {
 function logout() {
     document.getElementById("adminDiv").style.display = "None"
     document.getElementById("loginDiv").style.display = "block"
+}
+
+function movUno(){
+    document.getElementById("divScrolUno").style.display = "block"
+    document.getElementById("divScrolDos").style.display = "None"
+    document.getElementById("divScrolTres").style.display = "None"
+    document.getElementById("divScrolCuatro").style.display = "None"
+}
+function movDos(){
+    document.getElementById("divScrolUno").style.display = "None"
+    document.getElementById("divScrolDos").style.display = "block"
+    document.getElementById("divScrolTres").style.display = "None"
+    document.getElementById("divScrolCuatro").style.display = "None"
+}
+function movTres(){
+    document.getElementById("divScrolUno").style.display = "None"
+    document.getElementById("divScrolDos").style.display = "None"
+    document.getElementById("divScrolTres").style.display = "block"
+    document.getElementById("divScrolCuatro").style.display = "None"
+}
+function movCuatro(){
+    document.getElementById("divScrolUno").style.display = "None"
+    document.getElementById("divScrolDos").style.display = "None"
+    document.getElementById("divScrolTres").style.display = "None"
+    document.getElementById("divScrolCuatro").style.display = "block"
 }
