@@ -5,13 +5,16 @@ import { cliente } from './cliente.js'
 import { arbolActor } from './arbolBinario/arbolActores.js'
 import { autor } from './actor.js'
 import { hashCate } from './hashCategorias/hash.js'
+import { listagraficar } from './hashCategorias/listaCategorias.js'
 import { Categoria } from './Categoria.js'
 import { listaPeli } from './arbolAVL/listaPeliculas.js'
+import { listaComentarios } from './listaComents/listaComentarios.js'
 document.getElementById('enviarPeli').addEventListener("click", loadPeli, false);
 document.getElementById('enviarCliente').addEventListener("click", loadCliente, false);
 document.getElementById('enviarUser').addEventListener("click", loadActor, false);
 document.getElementById('enviarCate').addEventListener("click", loadCategoria, false);
 document.getElementById('logout').addEventListener("click", logout, false);
+document.getElementById('logoutUser').addEventListener("click", logoutDos, false);
 document.getElementById('Uno').addEventListener("click", movUno, false);
 document.getElementById('Dos').addEventListener("click", movDos, false);
 document.getElementById('Tres').addEventListener("click", movTres, false);
@@ -63,6 +66,8 @@ function crearPeli(archivo) {
     // console.log("XDDD")
     for (let x of archivo) {
         var peliNew = new pelicula(x.id_pelicula, x.nombre_pelicula, x.descripcion, x.puntuacion_star, x.precio_Q)
+        var lili = new listaComentarios()
+        peliNew.settCategorias(lili)
         listaPeli.insertar(peliNew)
         arbolPeli.insertar(peliNew)
     }
@@ -115,9 +120,36 @@ function crearCliente(archivo) {
     // listaUsuarios.graficarAdmin()
 }
 
-function verPeli(index) {
-    alert("jaja")
+window.verPeli = function verPeli(index) {
+    listaPeli.verPeli(index)
 }
+window.cambiarValoracion = function cambiarValoracion(index) {
+    var uno = index
+    var dos = String(document.getElementById(index).value)
+    if (dos >= 0 && dos <= 5) {
+        listaPeli.cambiarValo(uno, dos)
+    } else {
+        alert("Esa calificacion no es valida")
+    }
+
+}
+window.comentar = function comentar(index) {
+    var blabla = "coment" + index
+    var dos = String(document.getElementById(blabla).value)
+    var userEncontrado = localStorage.getItem('user');
+    var blax = userEncontrado + ": " + dos
+    if (blabla != "") {
+        listaPeli.comentar(index, blax)
+    } else {
+        alert("Esa comentario no es valido")
+    }
+
+}
+window.comprarPeli = function comprarPeli(index) {
+    listaPeli.comprar(index)
+
+}
+
 // Actro---------------------------------------------------------------------------------
 function loadActor() {
     var input, file, fr;
@@ -152,18 +184,19 @@ function crearActor(archivo) {
         arbolActor.insertar(userNew)
     }
     arbolActor.generarDot()
+    arbolActor.metodos()
     // listaAdmins.recorrer()
     // console.log("---------------------------------------------------")
     // listaUsuarios.recorrer()
     // listaUsuarios.graficarAdmin()
 }
-function grafUno(){
-    arbolActor.grafInOr()
+function grafUno() {
+    arbolActor.grafInOr();
 }
-function grafDos(){
+function grafDos() {
     arbolActor.grafPreOr()
 }
-function grafTres(){
+function grafTres() {
     arbolActor.grafPostOr()
 }
 // Categoria ----------------------------------------------------------------
@@ -197,11 +230,13 @@ function crearCate(archivo) {
     // console.log("XD")
     for (let x of archivo) {
         var userNew = new Categoria(x.id_categoria, x.company)
+        listagraficar.insertar(userNew)
         var modulex = (x.id_categoria % 20)
         var listaUno = hashCate.buscador(modulex)
         listaUno.insertar(userNew)
     }
     hashCate.graficarAdmin()
+    listagraficar.graficarDos()
     // 
     // listaAdmins.recorrer()
     // console.log("---------------------------------------------------")
@@ -214,6 +249,12 @@ function logout() {
     document.getElementById("adminDiv").style.display = "None"
     document.getElementById("loginDiv").style.display = "block"
 }
+function logoutDos() {
+    document.getElementById("userDiv").style.display = "None"
+    document.getElementById("loginDiv").style.display = "block"
+    localStorage.removeItem('user');
+}
+
 
 function movUno() {
     document.getElementById("divScrolUno").style.display = "block"

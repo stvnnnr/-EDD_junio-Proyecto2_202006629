@@ -25,8 +25,10 @@ export class listaActores {
         }
     }
     graficar() {
-        var element = document.getElementById("ejemplaresDiv");
         var actual = this.cabeza
+        var texto = ""
+        var lala = document.getElementById("actoresDiv")
+        lala.innerHTML=''
         while (actual != null) {
             const nombres = ["src/assets/img/profile.png"];
             const aleatorio = nombres[Math.floor(Math.random() * nombres.length)];
@@ -38,6 +40,7 @@ export class listaActores {
             texto += "</ul>\n</div>\n<div style=\"height:15px;\">     </div>\n"
             actual = actual.siguiente;
         }
-        element.innerHTML = texto
+        // console.log(texto)
+        lala.innerHTML = texto;
     }
 }

@@ -51,4 +51,19 @@ export class listaCategorias {
         codigodot += "</TABLE>>];\n}" + "\n"
         return (codigodot)
     }  
+
+
+    graficarDos() {
+        var actual = this.cabeza
+        var texto = ""
+        var lala = document.getElementById("categoriaDiv")
+        lala.innerHTML=''
+        while (actual != null) {
+            texto += "<div class=\"jaja\">"+actual.valor.compani+"</div>\n"
+            actual = actual.siguiente;
+        }
+        // console.log(texto)
+        lala.innerHTML = texto;
+    }
 }
+export var listagraficar = new listaCategorias()

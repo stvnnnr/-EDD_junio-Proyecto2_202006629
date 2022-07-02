@@ -145,16 +145,18 @@ export class abb {
         }
     }
 
-    grafInOr(){
+    metodos(){
         this.inOrden(this.raiz)
+        this.preorden(this.raiz)
+        this.postOrden(this.raiz)
+    }
+    grafInOr(){
         inOrden.graficar()
     }
     grafPreOr(){
-        this.preorden(this.raiz)
         preorden.graficar()
     }
     grafPostOr(){
-        this.postOrden(this.raiz)
         postOrden.graficar()
     }
 }

@@ -268,17 +268,17 @@
         <!-- fghjk -->
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
-                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Rentar Peliculas</button>
-                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
-                    type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ver Actores</button>
-                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                    type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Ver Categorias</button>
+                <button class="nav-link active" id="nav-heme-tab" data-bs-toggle="tab" data-bs-target="#nav-heme"
+                    type="button" role="tab" aria-controls="nav-heme" aria-selected="true">Rentar Peliculas</button>
+                <button class="nav-link" id="nav-prefele-tab" data-bs-toggle="tab" data-bs-target="#nav-prefele"
+                    type="button" role="tab" aria-controls="nav-prefele" aria-selected="false">Ver Actores</button>
+                <button class="nav-link" id="nav-contante-tab" data-bs-toggle="tab" data-bs-target="#nav-contante"
+                    type="button" role="tab" aria-controls="nav-contante" aria-selected="false">Ver Categorias</button>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <!--Empieza seccion de pelis-->
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="tab-pane fade show active" id="nav-heme" role="tabpanel" aria-labelledby="nav-heme-tab">
                 <div class="p-4">
                     <!-- lo de las pelis -->
                     <button type="button" class="btn btn-primary btn-lg btn-block" id="alfa">Ordenar
@@ -311,7 +311,7 @@
             </div>
 
             <!--Empieza seccion de actores-->
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="tab-pane fade" id="nav-prefele" role="tabpanel" aria-labelledby="nav-prefele-tab">
                 <div class="p-4">
                     <button type="button" class="btn btn-primary btn-lg btn-block" id="inOrden">Ordenar
                         In orden</button>
@@ -319,14 +319,13 @@
                         Pre orden</button>
                     <button type="button" class="btn btn-primary btn-lg btn-block" id="postOrden">Ordenar
                         Post Orden</button>
-                    <div id="actoresDiv" style="display:inline;">
-                    </div>
+                    <div id="actoresDiv" style="display:inline;"></div>
                 </div>
             </div>
 
             <!--Empieza seccion de categorias-->
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                <div class="p-4">
+            <div class="tab-pane fade" id="nav-contante" role="tabpanel" aria-labelledby="nav-contante-tab">
+                <div class="p-4" id="categoriaDiv" style="display: flex; flex-flow: row wrap; justify-content: space-around;position:relative;">
 
                 </div>
             </div>
@@ -334,26 +333,20 @@
         <!-- fghjk -->
     </div>
 </body>
+<script src="src/js/bootstrap/popper.min.js"></script>
+<script src="src/js/bootstrap/bootstrap.min.js"></script>
+<script src="src/js/bootstrap/papaparse.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//d3js.org/d3.v5.min.js"></script>
 <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
 <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
-<script src="src/js/bootstrap/popper.min.js"></script>
-<script src="src/js/bootstrap/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="src/js/bootstrap/papaparse.min.js"></script>
 <script type="module" src="src/js/login.js"></script>
 <script type="module" src="src/js/admin.js"></script>
 <script type="module" src="src/js/listaClientes/listaClientes.js"></script>
 <script type="module" src="src/js/arbolAVL/listaPeliculas.js"></script>
-<!-- <script type="module" src="src/js/listasUsuarios/listaCUsuarios.js"></script>
-<script type="module" src="src/js/listaAdmins/listaAdmins.js"></script>
-<script type="module" src="src/js/listaLibrosComprados/listaLibCom.js"></script>
-<script type="module" src="src/js/arbolAutores/arbolAutores.js"></script>
-<script type="module" src="src/js/matrizOrtogonalLibros/matrizOrtogonal.js"></script>
-<script type="module" src="src/js/listaLibros/listaLibros.js"></script>
-<script type="module" src="src/js/matrizDisperza/matrizDisperza.js"></script> -->
 <script src="https://superal.github.io/canvas2image/canvas2image.js "></script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 </html>
