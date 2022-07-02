@@ -5,5 +5,6 @@ export class pelicula{
         this.descripcion=descripcion
         this.puntuacion=puntuacion
         this.precio = precio
+        this.rentada = false
     }
 }

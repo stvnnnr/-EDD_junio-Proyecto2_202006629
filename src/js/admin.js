@@ -20,6 +20,11 @@ document.getElementById('dwUno').addEventListener("click", dwUno, false);
 document.getElementById('dwDos').addEventListener("click", dwDos, false);
 document.getElementById('dwTres').addEventListener("click", dwTres, false);
 document.getElementById('dwCuatro').addEventListener("click", dwCuatro, false);
+document.getElementById('alfa').addEventListener("click", peliAlfa, false);
+document.getElementById('Antialfa').addEventListener("click", peliInAlfa, false);
+document.getElementById('inOrden').addEventListener("click", grafUno, false);
+document.getElementById('preOrden').addEventListener("click", grafDos, false);
+document.getElementById('postOrden').addEventListener("click", grafTres, false);
 
 
 
@@ -57,11 +62,18 @@ function receivedText(e) {
 function crearPeli(archivo) {
     // console.log("XDDD")
     for (let x of archivo) {
-        var peliNew = new pelicula(x.id_pelicula, x.nombre_pelicula, x.descripcion, x.puntuacion_star, x.precion_Q)
+        var peliNew = new pelicula(x.id_pelicula, x.nombre_pelicula, x.descripcion, x.puntuacion_star, x.precio_Q)
         listaPeli.insertar(peliNew)
         arbolPeli.insertar(peliNew)
     }
     arbolPeli.generarDot()
+}
+
+function peliAlfa() {
+    listaPeli.metodoUno()
+}
+function peliInAlfa() {
+    listaPeli.metodoDOs()
 }
 // Cliente------------------------------------------------------------------------------
 function loadCliente() {
@@ -102,6 +114,10 @@ function crearCliente(archivo) {
     // listaUsuarios.recorrer()
     // listaUsuarios.graficarAdmin()
 }
+
+function verPeli(index) {
+    alert("jaja")
+}
 // Actro---------------------------------------------------------------------------------
 function loadActor() {
     var input, file, fr;
@@ -140,6 +156,15 @@ function crearActor(archivo) {
     // console.log("---------------------------------------------------")
     // listaUsuarios.recorrer()
     // listaUsuarios.graficarAdmin()
+}
+function grafUno(){
+    arbolActor.grafInOr()
+}
+function grafDos(){
+    arbolActor.grafPreOr()
+}
+function grafTres(){
+    arbolActor.grafPostOr()
 }
 // Categoria ----------------------------------------------------------------
 function loadCategoria() {
@@ -202,8 +227,6 @@ function movUno() {
     // });
     // dfghjklñdfghjklñfghjklfghjk
 }
-
-
 function movDos() {
     document.getElementById("divScrolUno").style.display = "None"
     document.getElementById("divScrolDos").style.display = "block"
@@ -225,26 +248,27 @@ function movCuatro() {
 
 function dwUno() {
     html2canvas($('#divScrolUno')[0]).then(function (canvas) {
-        return Canvas2Image.saveAsPNG(canvas);
         $(".response").append(canvas);
+        return Canvas2Image.saveAsPNG(canvas);
     });
 }
-
-
 function dwDos() {
     html2canvas($('#divScrolDos')[0]).then(function (canvas) {
+        $(".response").append(canvas);
         return Canvas2Image.saveAsPNG(canvas);
         $(".response").append(canvas);
     });
 }
 function dwTres() {
     html2canvas($('#divScrolTres')[0]).then(function (canvas) {
+        $(".response").append(canvas);
         return Canvas2Image.saveAsPNG(canvas);
         $(".response").append(canvas);
     });
 }
 function dwCuatro() {
     html2canvas($('#divScrolCuatro')[0]).then(function (canvas) {
+        $(".response").append(canvas);
         return Canvas2Image.saveAsPNG(canvas);
         $(".response").append(canvas);
     });

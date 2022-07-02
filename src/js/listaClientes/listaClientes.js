@@ -50,5 +50,20 @@ export class listaClientes {
             .fit(true)
             .renderDot(codigodot)
     }
+    logear(user, pass) {
+        var actual = this.cabeza
+        if (actual != null) {
+            for (let index = 0; index < (this.contador); index++) {
+                if (user == String(actual.valor.usuario) && pass == String(actual.valor.contra)) {
+                    return ("Usuario")
+                }
+                actual = actual.siguiente
+            }
+            return ("Nulo")
+        } else {
+            return ("vacia")
+        }
+
+    }
 }
 export var listaCli = new listaClientes();

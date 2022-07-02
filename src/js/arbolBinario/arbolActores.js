@@ -1,3 +1,7 @@
+import{listaActores} from './listaSimple.js'
+var inOrden = new listaActores()
+var postOrden = new listaActores()
+var preorden = new listaActores()
 class nodo {
     constructor(autor) {
         this.autor = autor
@@ -46,10 +50,10 @@ export class abb {
         cadena += "\n}"
         // console.log(cadena)
         d3.select("#divScrolTres").graphviz()
-        .width(1100)
-        .height(500)
-        .zoom(false)
-        .fit(true)
+            .width(1100)
+            .height(500)
+            .zoom(false)
+            .fit(true)
             .renderDot(cadena)
     }
 
@@ -118,6 +122,40 @@ export class abb {
                 return ("Existe")
             }
         }
+    }
+    inOrden(raiz_actual) {
+        if (raiz_actual != null) {
+            this.inOrden(raiz_actual.izq)
+            inOrden.insertar(raiz_actual.autor)
+            this.inOrden(raiz_actual.der)
+        }
+    }
+    preorden(raiz_actual) {
+        if (raiz_actual != null) {
+            preorden.insertar(raiz_actual.autor)
+            this.preorden(raiz_actual.izq)
+            this.preorden(raiz_actual.der)
+        }
+    }
+    postOrden(raiz_actual) {
+        if (raiz_actual != null) {
+            this.postOrden(raiz_actual.izq)
+            this.postOrden(raiz_actual.der)
+            postOrden.insertar(raiz_actual.autor)
+        }
+    }
+
+    grafInOr(){
+        this.inOrden(this.raiz)
+        inOrden.graficar()
+    }
+    grafPreOr(){
+        this.preorden(this.raiz)
+        preorden.graficar()
+    }
+    grafPostOr(){
+        this.postOrden(this.raiz)
+        postOrden.graficar()
     }
 }
 export var arbolActor = new abb()
