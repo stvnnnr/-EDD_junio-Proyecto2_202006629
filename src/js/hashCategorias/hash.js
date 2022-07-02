@@ -66,12 +66,9 @@ export class hashCategorias {
         var numnodo = 0;
         for (let index = 0; index < (this.contador); index++) {
             nodos += "N" + numnodo + "[label=\"" + temporal.valor.id + "\" PORT=\"" + temporal.valor.id + "\" ];\n"
-            if (temporal.siguiente != this.cabeza) {
+            if (temporal.siguiente != null) {
                 var auxnum = numnodo + 1
                 conexiones += "N" + numnodo + " -> N" + auxnum + ";\n"
-            } else {
-                var auxnum = numnodo + 1
-                conexiones += "N" + (numnodo) + " -> N" + 0 + ";\n"
             }
             temporal = temporal.siguiente
             numnodo++;
@@ -87,8 +84,10 @@ export class hashCategorias {
         // 
         // console.log(codigodot)
         d3.select("#divScrolCuatro").graphviz()
-            .width(900)
+            .width(1100)
             .height(500)
+            .zoom(false)
+            .fit(true)
             .renderDot(codigodot)
     }
 }

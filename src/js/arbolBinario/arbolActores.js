@@ -39,15 +39,17 @@ export class abb {
     }
 
     generarDot() {
-        let cadena = "digraph arbolAutores {size=\"12\";\n"
+        let cadena = "digraph arbolAutores {\n"
         cadena += this.cadenNodos(this.raiz)
         cadena += "\n"
         cadena += this.enlazar(this.raiz)
         cadena += "\n}"
         // console.log(cadena)
         d3.select("#divScrolTres").graphviz()
-            .width(900)
-            .height(500)
+        .width(1100)
+        .height(500)
+        .zoom(false)
+        .fit(true)
             .renderDot(cadena)
     }
 

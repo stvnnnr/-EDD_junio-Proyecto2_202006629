@@ -105,7 +105,7 @@ hr .new1 {
     top: 220px;
     bottom: 100px;
     left: 380px;
-    overflow-y: scroll;
+    overflow: auto;
 }
 
 #general {

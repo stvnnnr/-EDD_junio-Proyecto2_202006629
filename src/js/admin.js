@@ -3,9 +3,10 @@ import { pelicula } from './peliculas.js'
 import { listaCli } from './listaClientes/listaClientes.js'
 import { cliente } from './cliente.js'
 import { arbolActor } from './arbolBinario/arbolActores.js'
-import{autor} from './actor.js'
-import{hashCate} from './hashCategorias/hash.js'
-import{Categoria} from './Categoria.js'
+import { autor } from './actor.js'
+import { hashCate } from './hashCategorias/hash.js'
+import { Categoria } from './Categoria.js'
+import { listaPeli } from './arbolAVL/listaPeliculas.js'
 document.getElementById('enviarPeli').addEventListener("click", loadPeli, false);
 document.getElementById('enviarCliente').addEventListener("click", loadCliente, false);
 document.getElementById('enviarUser').addEventListener("click", loadActor, false);
@@ -15,6 +16,11 @@ document.getElementById('Uno').addEventListener("click", movUno, false);
 document.getElementById('Dos').addEventListener("click", movDos, false);
 document.getElementById('Tres').addEventListener("click", movTres, false);
 document.getElementById('Cuatro').addEventListener("click", movCuatro, false);
+document.getElementById('dwUno').addEventListener("click", dwUno, false);
+document.getElementById('dwDos').addEventListener("click", dwDos, false);
+document.getElementById('dwTres').addEventListener("click", dwTres, false);
+document.getElementById('dwCuatro').addEventListener("click", dwCuatro, false);
+
 
 
 
@@ -52,6 +58,7 @@ function crearPeli(archivo) {
     // console.log("XDDD")
     for (let x of archivo) {
         var peliNew = new pelicula(x.id_pelicula, x.nombre_pelicula, x.descripcion, x.puntuacion_star, x.precion_Q)
+        listaPeli.insertar(peliNew)
         arbolPeli.insertar(peliNew)
     }
     arbolPeli.generarDot()
@@ -164,8 +171,8 @@ function receivedTextCua(e) {
 function crearCate(archivo) {
     // console.log("XD")
     for (let x of archivo) {
-        var userNew = new Categoria(x.id_categoria,x.company)
-        var modulex = (x.id_categoria%20)
+        var userNew = new Categoria(x.id_categoria, x.company)
+        var modulex = (x.id_categoria % 20)
         var listaUno = hashCate.buscador(modulex)
         listaUno.insertar(userNew)
     }
@@ -183,27 +190,62 @@ function logout() {
     document.getElementById("loginDiv").style.display = "block"
 }
 
-function movUno(){
+function movUno() {
     document.getElementById("divScrolUno").style.display = "block"
     document.getElementById("divScrolDos").style.display = "None"
     document.getElementById("divScrolTres").style.display = "None"
     document.getElementById("divScrolCuatro").style.display = "None"
+    // dfghjklñ{dfghjklñ{fghjklñ}}
+    // html2canvas($('#divScrolUno')[0]).then(function (canvas) {
+    //     return Canvas2Image.saveAsPNG(canvas);
+    //     $(".response").append(canvas);
+    // });
+    // dfghjklñdfghjklñfghjklfghjk
 }
-function movDos(){
+
+
+function movDos() {
     document.getElementById("divScrolUno").style.display = "None"
     document.getElementById("divScrolDos").style.display = "block"
     document.getElementById("divScrolTres").style.display = "None"
     document.getElementById("divScrolCuatro").style.display = "None"
 }
-function movTres(){
+function movTres() {
     document.getElementById("divScrolUno").style.display = "None"
     document.getElementById("divScrolDos").style.display = "None"
     document.getElementById("divScrolTres").style.display = "block"
     document.getElementById("divScrolCuatro").style.display = "None"
 }
-function movCuatro(){
+function movCuatro() {
     document.getElementById("divScrolUno").style.display = "None"
     document.getElementById("divScrolDos").style.display = "None"
     document.getElementById("divScrolTres").style.display = "None"
     document.getElementById("divScrolCuatro").style.display = "block"
+}
+
+function dwUno() {
+    html2canvas($('#divScrolUno')[0]).then(function (canvas) {
+        return Canvas2Image.saveAsPNG(canvas);
+        $(".response").append(canvas);
+    });
+}
+
+
+function dwDos() {
+    html2canvas($('#divScrolDos')[0]).then(function (canvas) {
+        return Canvas2Image.saveAsPNG(canvas);
+        $(".response").append(canvas);
+    });
+}
+function dwTres() {
+    html2canvas($('#divScrolTres')[0]).then(function (canvas) {
+        return Canvas2Image.saveAsPNG(canvas);
+        $(".response").append(canvas);
+    });
+}
+function dwCuatro() {
+    html2canvas($('#divScrolCuatro')[0]).then(function (canvas) {
+        return Canvas2Image.saveAsPNG(canvas);
+        $(".response").append(canvas);
+    });
 }

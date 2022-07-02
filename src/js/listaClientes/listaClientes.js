@@ -44,8 +44,10 @@ export class listaClientes {
         codigodot += "{rank=same;\n" + conexiones + "\n}\n}"
         // console.log(codigodot)
         d3.select("#divScrolDos").graphviz()
-            .width(900)
+            .width(1100)
             .height(500)
+            .zoom(false)
+            .fit(true)
             .renderDot(codigodot)
     }
 }

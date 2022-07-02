@@ -123,14 +123,16 @@ class avl {
     }
 
     generarDot() {
-        let cadena = "digraph arbol {\n" + "node [shape = record, color=black , style=filled, fillcolor=olivedrab2];\n" + 'edge[arrowhead = icurve color="chocolate4" penwidth="1.5"];\n';
+        let cadena = "digraph arbol {\n" + "node [shape = record, color=black , style=filled, fillcolor=skyblue];\n" + 'edge[color="black" penwidth="1.5"];\n';
         cadena += this.generar_nodos(this.raiz);
         cadena += "\n";
         cadena += this.enlazar(this.raiz);
         cadena += "\n}";
         d3.select("#divScrolUno").graphviz()
-            .width(700)
-            .height(1400)
+            .width(1100)
+            .height(500)
+            .zoom(false)
+            .fit(true)
             .renderDot(cadena)
     }
 
