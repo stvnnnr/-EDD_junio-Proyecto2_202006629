@@ -111,6 +111,8 @@ export class listaPeliculas {
                     <label class="text-muted mb-2">Descripcion: ${actual.valor.descripcion}</label><br>
                     <label class="text-muted mb-2">Estrellas: ${actual.valor.puntuacion}</label><br>
                     <label class="text-muted mb-2">Precio:Q.${actual.valor.precio}.00</label><br>
+                    <button type="button" class="btn btn-light text-muted mr-2" 
+                    data-bs-toggle="modal" data-bs-target="#edit-paciente" onclick="comprarPeli(${actual.valor.id})"><i class="fas fa-shopping-cart"></i></button><br>
                     <label>Cambiar Valoracion: <input type="text" id="${index}"></label>
                     <button type="button" class="btn btn-light text-muted mr-2" onclick="cambiarValoracion(${index})"><i class="fas fa-history"></i></button><br>
                     <label class="text-muted mb-2">Comentarios:</label><br>

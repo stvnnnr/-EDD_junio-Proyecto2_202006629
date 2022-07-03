@@ -126,7 +126,7 @@ window.verPeli = function verPeli(index) {
 window.cambiarValoracion = function cambiarValoracion(index) {
     var uno = index
     var dos = String(document.getElementById(index).value)
-    if (dos >= 0 && dos <= 5) {
+    if (dos >= 1 && dos <= 5) {
         listaPeli.cambiarValo(uno, dos)
     } else {
         alert("Esa calificacion no es valida")

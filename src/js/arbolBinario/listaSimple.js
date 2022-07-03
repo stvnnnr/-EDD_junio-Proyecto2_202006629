@@ -32,9 +32,9 @@ export class listaActores {
         while (actual != null) {
             const nombres = ["src/assets/img/profile.png"];
             const aleatorio = nombres[Math.floor(Math.random() * nombres.length)];
-            texto += "<div class=\"card\" style=\"width: 18rem;\">\n<img class=\"card-img-top\" src=\""
+            texto += "<div class=\"card\" style=\"width: 15rem;\">\n<img class=\"card-img-top\" src=\""
             texto += aleatorio
-            texto += "\" WIDTH=50 HEIGHT=50 alt=\"Card image cap\">\n<div class=\"card-body\"\n>"
+            texto += "\" WIDTH=100 HEIGHT=100 alt=\"Card image cap\">\n<div class=\"card-body\"\n>"
             texto += "<h5 class=\"card-title\">" + actual.valor.nombre + "</h5>\n</div>\n<ul class=\"list-group list-group-flush\">\n"
             texto += "<li class=\"list-group-item\">Descripcion: " + actual.valor.descripcion + "</li>\n"
             texto += "</ul>\n</div>\n<div style=\"height:15px;\">     </div>\n"
